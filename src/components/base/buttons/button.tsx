@@ -9,11 +9,11 @@ export const styles = sortCx({
     common: {
         root: [
             "group relative inline-flex h-max cursor-pointer items-center justify-center whitespace-nowrap outline-brand transition duration-100 ease-linear before:absolute focus-visible:outline-2 focus-visible:outline-offset-2",
-            // When button is used within `InputGroup`
+            // Когда кнопка используется внутри `InputGroup`
             "in-data-input-wrapper:shadow-xs in-data-input-wrapper:focus:!z-50 in-data-input-wrapper:in-data-leading:-mr-px in-data-input-wrapper:in-data-leading:rounded-r-none in-data-input-wrapper:in-data-leading:before:rounded-r-none in-data-input-wrapper:in-data-trailing:-ml-px in-data-input-wrapper:in-data-trailing:rounded-l-none in-data-input-wrapper:in-data-trailing:before:rounded-l-none",
-            // Disabled styles
+            // Стили отключённого состояния
             "disabled:cursor-not-allowed disabled:opacity-50 in-data-input-wrapper:disabled:opacity-100",
-            // Same as `icon` but for SSR icons that cannot be passed to the client as functions.
+            // То же, что `icon`, но для SSR-иконок, которые нельзя передать на клиент как функции.
             "*:data-icon:pointer-events-none *:data-icon:size-5 *:data-icon:shrink-0 *:data-icon:transition-inherit-all",
         ].join(" "),
         icon: "pointer-events-none size-5 shrink-0 transition-inherit-all",
@@ -55,73 +55,73 @@ export const styles = sortCx({
         primary: {
             root: [
                 "bg-brand-solid text-white shadow-xs-skeuomorphic ring-1 ring-transparent ring-inset hover:bg-brand-solid_hover data-loading:bg-brand-solid_hover",
-                // Inner border gradient
+                // Внутренний градиент границы
                 "before:absolute before:inset-px before:border before:border-white/12 before:mask-b-from-0%",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-white/60 hover:*:data-icon:text-white/70",
             ].join(" "),
         },
         secondary: {
             root: [
                 "bg-primary text-secondary shadow-xs-skeuomorphic ring-1 ring-primary ring-inset hover:bg-primary_hover hover:text-secondary_hover data-loading:bg-primary_hover",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-fg-quaternary hover:*:data-icon:text-fg-quaternary_hover",
             ].join(" "),
         },
         tertiary: {
             root: [
                 "text-tertiary hover:bg-primary_hover hover:text-tertiary_hover data-loading:bg-primary_hover",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-fg-quaternary hover:*:data-icon:text-fg-quaternary_hover",
             ].join(" "),
         },
         "link-color": {
             root: [
                 "justify-normal rounded p-0! text-brand-secondary hover:text-brand-secondary_hover",
-                // Inner text underline
+                // Подчёркивание внутреннего текста
                 "*:data-text:underline *:data-text:decoration-transparent hover:*:data-text:decoration-fg-brand-secondary_alt",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-fg-brand-secondary_alt hover:*:data-icon:text-fg-brand-secondary_hover",
             ].join(" "),
         },
         "link-gray": {
             root: [
                 "justify-normal rounded p-0! text-tertiary hover:text-tertiary_hover",
-                // Inner text underline
+                // Подчёркивание внутреннего текста
                 "*:data-text:underline *:data-text:decoration-transparent hover:*:data-text:decoration-fg-quaternary",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-fg-quaternary hover:*:data-icon:text-fg-quaternary_hover",
             ].join(" "),
         },
         "primary-destructive": {
             root: [
                 "bg-error-solid text-white shadow-xs-skeuomorphic ring-1 ring-transparent outline-error ring-inset hover:bg-error-solid_hover data-loading:bg-error-solid_hover",
-                // Inner border gradient
+                // Внутренний градиент границы
                 "before:absolute before:inset-px before:border before:border-white/12 before:mask-b-from-0%",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-white/60 hover:*:data-icon:text-white/70",
             ].join(" "),
         },
         "secondary-destructive": {
             root: [
                 "bg-primary text-error-primary shadow-xs-skeuomorphic ring-1 ring-error_subtle outline-error ring-inset hover:bg-error-primary hover:text-error-primary_hover data-loading:bg-error-primary",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-fg-error-secondary hover:*:data-icon:text-fg-error-primary",
             ].join(" "),
         },
         "tertiary-destructive": {
             root: [
                 "text-error-primary outline-error hover:bg-error-primary hover:text-error-primary_hover data-loading:bg-error-primary",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-fg-error-secondary hover:*:data-icon:text-fg-error-primary",
             ].join(" "),
         },
         "link-destructive": {
             root: [
                 "justify-normal rounded p-0! text-error-primary outline-error hover:text-error-primary_hover",
-                // Inner text underline
+                // Подчёркивание внутреннего текста
                 "*:data-text:underline *:data-text:decoration-transparent *:data-text:underline-offset-2 hover:*:data-text:decoration-current",
-                // Icon styles
+                // Стили иконки
                 "*:data-icon:text-fg-error-secondary hover:*:data-icon:text-fg-error-primary",
             ].join(" "),
         },
@@ -129,44 +129,44 @@ export const styles = sortCx({
 });
 
 /**
- * Common props shared between button and anchor variants
+ * Общие пропсы для вариантов кнопки и ссылки (anchor)
  */
 export interface CommonProps {
-    /** Disables the button and shows a disabled state */
+    /** Отключает кнопку и показывает состояние disabled */
     isDisabled?: boolean;
-    /** Shows a loading spinner and disables the button */
+    /** Показывает спиннер загрузки и отключает кнопку */
     isLoading?: boolean;
-    /** The size variant of the button */
+    /** Размерный вариант кнопки */
     size?: keyof typeof styles.sizes;
-    /** The color variant of the button */
+    /** Цветовой вариант кнопки */
     color?: keyof typeof styles.colors;
-    /** Icon component or element to show before the text */
+    /** Компонент или элемент иконки перед текстом */
     iconLeading?: FC<{ className?: string }> | ReactNode;
-    /** Icon component or element to show after the text */
+    /** Компонент или элемент иконки после текста */
     iconTrailing?: FC<{ className?: string }> | ReactNode;
-    /** Removes horizontal padding from the text content */
+    /** Убирает горизонтальные отступы у текстового содержимого */
     noTextPadding?: boolean;
-    /** When true, keeps the text visible during loading state */
+    /** Если true, текст остаётся видимым при состоянии загрузки */
     showTextWhileLoading?: boolean;
 }
 
 /**
- * Props for the button variant (non-link)
+ * Пропсы варианта кнопки (не ссылка)
  */
 export interface ButtonProps extends CommonProps, DetailedHTMLProps<Omit<ButtonHTMLAttributes<HTMLButtonElement>, "color" | "slot">, HTMLButtonElement> {
-    /** Slot name for react-aria component */
+    /** Имя слота для компонента react-aria */
     slot?: AriaButtonProps["slot"];
 }
 
 /**
- * Props for the link variant (anchor tag)
+ * Пропсы варианта-ссылки (тег anchor)
  */
 interface LinkProps extends CommonProps, DetailedHTMLProps<Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "color">, HTMLAnchorElement> {
-    /** Options for the configured client side router. */
+    /** Опции для настроенного клиентского роутера. */
     routerOptions?: AriaLinkProps["routerOptions"];
 }
 
-/** Union type of button and link props */
+/** Объединённый тип пропсов кнопки и ссылки */
 export type Props = ButtonProps | LinkProps;
 
 export const Button = ({
@@ -219,12 +219,12 @@ export const Button = ({
                 styles.colors[color].root,
                 isLinkType && styles.sizes[size].linkRoot,
                 (loading || (href && (disabled || loading))) && "pointer-events-none",
-                // If in `loading` state, hide everything except the loading icon (and text if `showTextWhileLoading` is true).
+                // В состоянии `loading` скрыть всё, кроме иконки загрузки (и текста, если `showTextWhileLoading` — true).
                 loading && (showTextWhileLoading ? "[&>*:not([data-icon=loading]):not([data-text])]:hidden" : "[&>*:not([data-icon=loading])]:invisible"),
                 className,
             )}
         >
-            {/* Leading icon */}
+            {/* Иконка слева */}
             {isValidElement(IconLeading) && IconLeading}
             {isReactComponent(IconLeading) && <IconLeading data-icon="leading" className={styles.common.icon} />}
 
@@ -235,9 +235,9 @@ export const Button = ({
                     viewBox="0 0 20 20"
                     className={cx(styles.common.icon, !showTextWhileLoading && "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2")}
                 >
-                    {/* Background circle */}
+                    {/* Фоновый круг */}
                     <circle className="stroke-current opacity-30" cx="10" cy="10" r="8" fill="none" strokeWidth="2" />
-                    {/* Spinning circle */}
+                    {/* Вращающийся круг */}
                     <circle
                         className="origin-center animate-spin stroke-current"
                         cx="10"
@@ -257,7 +257,7 @@ export const Button = ({
                 </span>
             )}
 
-            {/* Trailing icon */}
+            {/* Иконка справа */}
             {isValidElement(IconTrailing) && IconTrailing}
             {isReactComponent(IconTrailing) && <IconTrailing data-icon="trailing" className={styles.common.icon} />}
         </Component>

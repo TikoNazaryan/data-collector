@@ -1,31 +1,43 @@
-import { Rocket01 } from "@untitledui/icons";
+import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 
-import { Button } from "@/components/base/buttons/button";
+import { ApplicationFormProvider } from "@/application-form/ApplicationFormProvider";
+import { AddressAndWorkplacePage } from "@/pages/AddressAndWorkplacePage";
+import { LoanParametersPage } from "@/pages/LoanParametersPage";
+import { PersonalInformationPage } from "@/pages/PersonalInformationPage";
+
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    [
+        "rounded-lg px-3 py-2 text-sm font-semibold transition-colors",
+        isActive ? "bg-primary text-secondary shadow-xs-skeuomorphic ring-1 ring-primary ring-inset" : "text-tertiary hover:bg-primary_hover hover:text-tertiary_hover",
+    ].join(" ");
 
 export function App() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-8 bg-secondary px-6 py-16">
-      <div className="max-w-lg text-center">
-        <p className="text-sm font-semibold text-brand-secondary">
-          Untitled UI
-        </p>
-        <h1 className="mt-2 text-display-sm font-semibold text-primary md:text-display-md">
-          React + Webpack + Tailwind
-        </h1>
-        <p className="mt-3 text-md text-tertiary">
-          Official theme tokens, typography, and a Button from the open-source
-          Untitled UI React library.
-        </p>
-      </div>
-      <div className="flex flex-wrap items-center justify-center gap-3">
-        <Button color="primary" iconLeading={Rocket01}>
-          Primary sdfsd
-        </Button>
-        <Button color="secondary" iconLeading={Rocket01}>
-          Secondary
-        </Button>
-        <Button color="tertiary">Tertiary</Button>
-      </div>
-    </main>
-  );
+    return (
+        <div className="min-h-screen bg-secondary">
+            <header className="border-b border-secondary bg-primary px-6 py-4">
+                <nav className="mx-auto flex max-w-3xl flex-wrap gap-1" aria-label="Application steps">
+                    <NavLink to="/personal-information" className={navLinkClass} end>
+                        Personal Information
+                    </NavLink>
+                    <NavLink to="/address-workplace" className={navLinkClass} end>
+                        Address and Workplace
+                    </NavLink>
+                    <NavLink to="/loan-parameters" className={navLinkClass} end>
+                        Loan Parameters
+                    </NavLink>
+                </nav>
+            </header>
+            <main className="px-6 py-12">
+                <ApplicationFormProvider>
+                    <Routes>
+                        <Route path="/" element={<Navigate to="/personal-information" replace />} />
+                        <Route path="/personal-information" element={<PersonalInformationPage />} />
+                        <Route path="/address-workplace" element={<AddressAndWorkplacePage />} />
+                        <Route path="/loan-parameters" element={<LoanParametersPage />} />
+                        <Route path="*" element={<Navigate to="/personal-information" replace />} />
+                    </Routes>
+                </ApplicationFormProvider>
+            </main>
+        </div>
+    );
 }

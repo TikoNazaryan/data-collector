@@ -1,5 +1,10 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+require("dotenv").config({ path: path.resolve(__dirname, ".env") });
+
+const apiBaseUrl = process.env.API_BASE_URL || "https://dummyjson.com";
 
 /** @type {import('webpack').Configuration} */
 module.exports = (env, argv) => {
@@ -39,6 +44,9 @@ module.exports = (env, argv) => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: "./public/index.html",
+            }),
+            new webpack.DefinePlugin({
+                "process.env.API_BASE_URL": JSON.stringify(apiBaseUrl),
             }),
         ],
         devServer: {

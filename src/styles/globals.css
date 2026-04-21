@@ -11,15 +11,15 @@
 @custom-variant focus-input-within (&:has(input:focus));
 
 @utility scrollbar-hide {
-    /* For Webkit-based browsers (Chrome, Safari and Opera) */
+    /* Браузеры на движке WebKit (Chrome, Safari, Opera) */
     &::-webkit-scrollbar {
         display: none;
         -webkit-appearance: none;
     }
 
-    /* For IE, Edge and Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    /* IE, Edge и Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-width: none; /* только Firefox */
 }
 
 @utility transition-inherit-all {
@@ -43,24 +43,24 @@ body {
     font-kerning: normal;
 }
 
-/* Hide the default expand arrow on Safari. */
+/* Скрыть стрелку раскрытия по умолчанию в Safari. */
 details summary::-webkit-details-marker {
     display: none;
 }
 
-/* Hide default arrows from number inputs. */
-/* Chrome, Safari, Edge, Opera */
+/* Скрыть стрелки у полей type="number" по умолчанию. */
+/* Движки WebKit/Blink: Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-/* Firefox */
+/* Браузер Firefox */
 input[type="number"] {
     -moz-appearance: textfield;
 }
 
-/* Hide the default clear button (X) from search inputs. */
+/* Скрыть кнопку очистки (крестик) у полей type="search" по умолчанию. */
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }

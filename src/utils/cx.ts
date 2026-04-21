@@ -9,15 +9,14 @@ const twMerge = extendTailwindMerge({
 });
 
 /**
- * This function is a wrapper around the twMerge function.
- * It is used to merge the classes inside style objects.
+ * Обертка над функцией twMerge.
+ * Используется для объединения классов внутри объектов стилей.
  */
 export const cx = twMerge;
 
 /**
- * This function does nothing besides helping us to be able to
- * sort the classes inside style objects which is not supported
- * by the Tailwind IntelliSense by default.
+ * Ничего не делает, кроме как помогает сортировать классы внутри объектов стилей —
+ * по умолчанию Tailwind IntelliSense это не поддерживает.
  */
 export function sortCx<T extends Record<string, string | number | Record<string, string | number | Record<string, string | number>>>>(classes: T): T {
     return classes;
